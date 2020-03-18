@@ -11,6 +11,7 @@ int main() {
 	int r=n-1;
 	int suma=0;
 	int srednia;
+/*
 	for (int k=0; k<100; k++)
 	{
 		int *T = new int [n];
@@ -33,5 +34,13 @@ int main() {
 	{
 		srednia=suma/100;
 	}
-	cout<<"Calkowity czas: "<<suma<<endl<<"Sredni czas: "<<srednia;
+	cout<<endl<<"Sredni czas: "<<srednia<<endl;
+*/
+	int *T = new int [n];
+	for (int i=0; i<n;i++)
+		{
+			T[i]=rand()%n;
+		}
+	sort_scalanie(T,p,r);
+	delete [] T;
 }
