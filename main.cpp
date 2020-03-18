@@ -6,7 +6,7 @@
 #include <chrono>
 using namespace std;
 int main() {
-	int n=1000000;
+	int n=500000;
 	int p=0;
 	int r=n-1;
 	int suma=0;
@@ -19,7 +19,7 @@ int main() {
 				T[i]=rand()%n;
 			}	
 		auto t1=chrono::high_resolution_clock::now();
-		quicksort(T,p,r);
+		sort_scalanie(T,p,r);
 		auto t2=chrono::high_resolution_clock::now();
 		auto duration= chrono::duration_cast<chrono::microseconds>(t2-t1).count();
 		delete [] T;
@@ -35,4 +35,3 @@ int main() {
 	}
 	cout<<"Calkowity czas: "<<suma<<endl<<"Sredni czas: "<<srednia;
 }
-
