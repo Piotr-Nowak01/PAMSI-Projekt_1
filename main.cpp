@@ -6,7 +6,7 @@
 #include <chrono>
 using namespace std;
 int main() {
-	int n=500000;
+	int n=1000000;
 	int p=0;
 	int r=n-1;
 	int suma=0;
