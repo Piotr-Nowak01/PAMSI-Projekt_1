@@ -3,7 +3,7 @@ void scalanie(int T[], int p, int q, int r)
 {
 int *pom = new int [r];
 int i=p,j=q+1;
-for(int i=p;i<=r; i++) 
+for(int i=p;i<r; i++) 
     {
 		pom[i] = T[i];
 	}
