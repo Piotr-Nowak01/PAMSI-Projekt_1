@@ -6,19 +6,33 @@
 #include <chrono>
 using namespace std;
 int main() {
-	int n=500000;
-	int T[n];
+	int n=1000000;
 	int p=0;
-	int r=((sizeof(T)/sizeof(T[0]))-1);
-	long long int srednia=0;
-	for (int k=0; k<100;k++)
+	int r=n-1;
+	int suma=0;
+	int srednia;
+	for (int k=0; k<100; k++)
 	{
+		int *T = new int [n];
 		for (int i=0; i<n;i++)
-		{
-			T[i]=rand()%n;
-		}	
+			{
+				T[i]=rand()%n;
+			}	
+		auto t1=chrono::high_resolution_clock::now();
 		quicksort(T,p,r);
+		auto t2=chrono::high_resolution_clock::now();
+		auto duration= chrono::duration_cast<chrono::microseconds>(t2-t1).count();
+		delete [] T;
+		suma+=duration;
 	}
-cout<<"Koniec";
+	if(suma%100>50)
+	{
+		srednia=(suma/100)+1;	
+	} 
+	else
+	{
+		srednia=suma/100;
+	}
+	cout<<"Calkowity czas: "<<suma<<endl<<"Sredni czas: "<<srednia;
 }
 

@@ -7,7 +7,7 @@ for(int i=p;i<=r; i++)
     {
 		pom[i] = T[i];
 	}
-for(int k=p;k<=r;k++) 
+for(int k=p;k<r;k++) 
 	if(i<=q)
 		if(j <= r)
     		if(pom[j]<pom[i])
