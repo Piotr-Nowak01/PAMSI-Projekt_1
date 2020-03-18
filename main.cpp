@@ -11,8 +11,7 @@ int main() {
 	int r=n-1;
 	int suma=0;
 	int srednia;
-/*
-	for (int k=0; k<100; k++)
+	for (int k=0; k<1; k++)
 	{
 		int *T = new int [n];
 		for (int i=0; i<n;i++)
@@ -20,7 +19,7 @@ int main() {
 				T[i]=rand()%n;
 			}	
 		auto t1=chrono::high_resolution_clock::now();
-		sort_scalanie(T,p,r);
+		quicksort(T,p,r);  //sortowanie tablicy
 		auto t2=chrono::high_resolution_clock::now();
 		auto duration= chrono::duration_cast<chrono::microseconds>(t2-t1).count();
 		delete [] T;
@@ -35,12 +34,5 @@ int main() {
 		srednia=suma/100;
 	}
 	cout<<endl<<"Sredni czas: "<<srednia<<endl;
-*/
-	int *T = new int [n];
-	for (int i=0; i<n;i++)
-		{
-			T[i]=rand()%n;
-		}
-	sort_scalanie(T,p,r);
-	delete [] T;
+
 }
