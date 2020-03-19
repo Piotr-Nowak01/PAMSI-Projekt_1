@@ -56,8 +56,7 @@ int podziel ( int T[], int p, int r)
 	zamiana(&T[os], &T[r]);
 	return os;
 }
-
-void _doheap(int T[], int p, int r ){
+void kopiec(int T[], int p, int r ){
 	int pom = T[p];
 	while (p<=r/2) 
 	{
@@ -76,15 +75,17 @@ void _doheap(int T[], int p, int r ){
 	T[p] = pom;
 }
 
-void _heapsort(int a[], int begin, int end ){
-	int i;
-	for(int i = (end-1) / 2; i >= begin; i--){
-		_doheap( a, i , end-1);
+void sort_kopiec(int T[], int p, int r )
+{
+	for(int i =(r-1)/2;i>=p;i--)
+	{
+		kopiec(T,i,r-1);
 	}
-	for( i=end-1; i>begin; i --){
-		zamiana( &a[i], &a[begin]);
-		_doheap(a, begin, i-1);
-		}
+	for(int i=r-1;i>p;i--)
+	{
+		zamiana( &T[i], &T[p]);
+		kopiec(T,p,i-1);
+	}
 }
 
 void introsort_1(int T[], int p, int r, int g){
@@ -92,7 +93,7 @@ void introsort_1(int T[], int p, int r, int g){
   {
 		if(g=0)
 		{
-			_heapsort(&T[p], p, r-p+1 );
+			sort_kopiec(&T[p],p,r-p+1);
 		}
 		else 
 		{
@@ -101,9 +102,9 @@ void introsort_1(int T[], int p, int r, int g){
 			{
 				break;
 			}
-			os = podziel(T, p, r);
-			introsort_1(T, os+1, r, g-1);
-			r = os -1;
+			os=podziel(T,p,r);
+			introsort_1(T,os+1,r,g-1);
+			r=os-1;
 		}
 	}
 }

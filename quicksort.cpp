@@ -1,7 +1,7 @@
 #include "quicksort.h"
 int podzial(int T[], int p, int r)
 {
-	int x=T[p];
+	int x=T[(p+r)/2];
 	int i=p,j=r,w;
 	while (true)
 	{
