@@ -18,7 +18,8 @@ bool czy_posortowane(int T[], int r){
 }
 void wstaw (int T[], int n ) 
 {
-	for (int i=1;i<n;i++) 
+	int i;
+	for (i=1;i<n;i++) 
 	{
 		int j, pom = T[i];
 		for (j=i;j>=1 && T[j - 1]>pom; j-- )
