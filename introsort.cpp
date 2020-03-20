@@ -29,33 +29,27 @@ void wstaw (int T[], int n )
 		T[j] = pom;
 	}
 }
-int podziel ( int T[], int p, int r)
+int podziel(int T[], int p, int r)
 {
-	int os, srodek = (p+r)/2; 
-	if(T[p]>T[srodek])
+	int x=T[(p+r)/2];
+	int i=p,j=r,w;
+	while (true)
 	{
-		os=p;
+		while(T[j]>x)
+			j--;
+		while (T[i]<x)
+			i++;
+		if (i<j)
+			{
+				w=T[i];
+				T[i]=T[j];
+				T[j]=w;
+				i++;
+				j--;
+			}
+		else 
+			return j;
 	}
-	else 
-	{
-		os=srodek;
-	}
-	if(T[os]>T[r])
-	{
-		os = r;
- 	}
-	zamiana(&T[os], &T[p]);
-	os = p; 
-	while (p<r)
-	{
-		if (T[p]<=T[r])
-		{
-			zamiana( &T[os++], &T[p] );
-		}
-		++p;
-	} 
-	zamiana(&T[os], &T[r]);
-	return os;
 }
 void kopiec(int T[], int p, int r ){
 	int pom = T[p];
@@ -90,7 +84,7 @@ void sort_kopiec(int T[], int p, int r )
 }
 
 void introsort_1(int T[], int p, int r, int g){
-  while(r-p>0) 
+  while(r-p>16) 
   {
 		if(g=0)
 		{
@@ -104,18 +98,13 @@ void introsort_1(int T[], int p, int r, int g){
 				break;
 			}
 			os=podziel(T,p,r);
+			introsort_1(T,0,os+1,g-1);
 			introsort_1(T,os+1,r,g-1);
 			r=os-1;
 		}
 	}
 }
- 
 void introsort(int T[], int n){
 	introsort_1 ( T, 0, n-1, (int(2*log(double(n)))));
 	wstaw(T, n);
 }
- 
-
-
- 
-

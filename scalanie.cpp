@@ -8,28 +8,30 @@ for(int i=p;i<=r; i++)
 		pom[i] = T[i];
 	}
 for(int k=p;k<=r;k++) 
-	if(i<=q && j <= r)
-    {
-    	if (pom[i]<=pom[j])
-    	{
-    		T[k]=pom[i];
-    		i++;
+	{
+		if(i<=q && j <= r)
+	    {
+	    	if (pom[i]<=pom[j])
+	    	{
+	    		T[k]=pom[i];
+	    		i++;
+			}
+			else
+			{
+				T[k]=pom[j];
+				j++;
+			}
 		}
-		else
+		else if (i<=q)
+		{
+			T[k]=pom[i];
+			i++;
+		}
+		else 
 		{
 			T[k]=pom[j];
 			j++;
 		}
-	}
-	else if (i<=q)
-	{
-		T[k]=pom[i];
-		i++;
-	}
-	else 
-	{
-		T[k]=pom[j];
-		j++;
 	}
     delete [] pom;
 }
