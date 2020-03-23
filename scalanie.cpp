@@ -35,8 +35,6 @@ for(int k=p;k<=r;k++)
 	}
     delete [] pom;
 }
-
- 
 void sort_scalanie(int T[], int p, int r)
 {
 	if (p<r)
