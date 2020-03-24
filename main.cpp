@@ -12,7 +12,7 @@ int main() {
 	int r=n-1;						// indeks ostatniego elementu
 	int suma=0;						// suma czasów dzia³ania dla 100 tablic
 	int srednia;					// œredni czas dzia³ania algorytmu
-	double x=0;						// ile % pocz¹tkowych indeksów tablicy ma byæ posortowane
+	double x=0.997;						// ile % pocz¹tkowych indeksów tablicy ma byæ posortowane
 	for (int k=0; k<100; k++)
 	{
 		int *T1 = new int [n];		//tworzenie tablicy dynamicznej o rozmiarze n
