@@ -7,21 +7,25 @@
 #include <chrono>
 using namespace std;
 int main() {
-	int n=10000;		// iloœæ elementów w tablicy
-	int p=0;			// indeks 1 elementu
-	int r=n-1;			// indeks ostatniego elementu
-	int suma=0;			
-	int srednia;		// œredni czas dzia³ania algorytmu
-	double x=1;			// ile % pocz¹tkowych indeksów tablicy ma byæ posortowane
+	int n=10000;					// iloœæ elementów w tablicy
+	int p=0;						// indeks 1 elementu
+	int r=n-1;						// indeks ostatniego elementu
+	int suma=0;						// suma czasów dzia³ania dla 100 tablic
+	int srednia;					// œredni czas dzia³ania algorytmu
+	double x=0;						// ile % pocz¹tkowych indeksów tablicy ma byæ posortowane
 	for (int k=0; k<100; k++)
 	{
-		int *T1 = new int [n];	//tworzenie tablicy dynamicznej o rozmiarze n
-		for (int i=0; i<n;i++)	// zape³nianie tablicy
+		int *T1 = new int [n];		//tworzenie tablicy dynamicznej o rozmiarze n
+		for (int i=0; i<x*n;i++)	// zape³nianie tablicy
 			{
-				T1[i]=n-i;
+				T1[i]=i;
+			}
+		for (int i=x*n;i<n;i++)
+			{
+				T1[i]=rand()%n+x*n;
 			}
 		auto t1=chrono::high_resolution_clock::now(); //pobranie czasu przez rozpoczêciem algorytmu
-		quicksort(T1,p,r);  //sortowanie tablicy
+		introsort(T1,p,r);  //sortowanie tablicy
 		auto t2=chrono::high_resolution_clock::now(); //pobranie czasu po zakoñczeniu algorytmu
 		auto duration= chrono::duration_cast<chrono::microseconds>(t2-t1).count();  //czas dzia³ania algorytmu
 		delete [] T1;
