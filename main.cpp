@@ -7,35 +7,24 @@
 #include <chrono>
 using namespace std;
 int main() {
-	int n=1000000;		// iloœæ elementów w tablicy
+	int n=10000;		// iloœæ elementów w tablicy
 	int p=0;			// indeks 1 elementu
 	int r=n-1;			// indeks ostatniego elementu
 	int suma=0;			
 	int srednia;		// œredni czas dzia³ania algorytmu
 	double x=1;			// ile % pocz¹tkowych indeksów tablicy ma byæ posortowane
-	for (int k=0; k<1; k++)
+	for (int k=0; k<100; k++)
 	{
-		int *T = new int [n];
-		for (int i=0; i<n;i++)
+		int *T1 = new int [n];	//tworzenie tablicy dynamicznej o rozmiarze n
+		for (int i=0; i<n;i++)	// zape³nianie tablicy
 			{
-				T[i]=rand()%n;
-//				cout<<T[i]<<" ";
-//			}
-//		for (int i=x*n; i<n;i++)
-//			{
-//				T[i]=n-i;
-//				cout<<T[i]<<" ";
+				T1[i]=n-i;
 			}
-		cout<<endl;	
-		auto t1=chrono::high_resolution_clock::now();
-		sort_scalanie(T,p,r);  //sortowanie tablicy
-		auto t2=chrono::high_resolution_clock::now();
-		auto duration= chrono::duration_cast<chrono::microseconds>(t2-t1).count();
-		for(int i=0;i<n;i++)
-		{
-//			cout<<T[i]<<" ";
-		}
-		delete [] T;
+		auto t1=chrono::high_resolution_clock::now(); //pobranie czasu przez rozpoczêciem algorytmu
+		quicksort(T1,p,r);  //sortowanie tablicy
+		auto t2=chrono::high_resolution_clock::now(); //pobranie czasu po zakoñczeniu algorytmu
+		auto duration= chrono::duration_cast<chrono::microseconds>(t2-t1).count();  //czas dzia³ania algorytmu
+		delete [] T1;
 		suma+=duration;
 	}
 	if(suma%100>50)
@@ -46,6 +35,5 @@ int main() {
 	{
 		srednia=suma/100;
 	}
-	cout<<endl<<"Sredni czas: "<<srednia<<endl;
-
+	cout<<"Srednia: "<<srednia<<endl;
 }
