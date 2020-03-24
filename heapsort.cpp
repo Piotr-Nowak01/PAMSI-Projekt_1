@@ -5,15 +5,15 @@ void kopcowanie (int T[],int rozmiar, int os)
 	int pom;
 	int l=2*os+1;
 	int p=2*os+2;
-	if (l<rozmiar && T[l]>T[max])
+	if (l<rozmiar && T[l]>T[max])		//szukanie najwiêkszego elementu w 1 czêœci tablicy, który by³by wiêkszy od wartoœci elementu dziel¹cego 
 	{
 		max=l;
 	}
-	if (p<rozmiar && T[p]>T[max])
+	if (p<rozmiar && T[p]>T[max])		//szukanie najwiêkszego elementu w 2 czêœci tablicy, który by³by wiêkszy od wartoœci elementu dziel¹cego
 	{
 		max=p;
 	}
-	if (max!=os)
+	if (max!=os)						// jeœli najwiêksza wartoœæ nie jest równa wartoœci elementu dziel¹cego, zamieñ te 2 wartoœci i wykonaj ponownie kopcowanie
 	{
 		pom=T[os];
 		T[os]=T[max];
@@ -28,22 +28,22 @@ void heapsort(int T[],int p,int r)
 	int *pom=new int [r-p];
 	for (int i=0;i<r-p;i++)
 	{
-		pom[i]=T[i+p];
+		pom[i]=T[i+p];				//tworzenie tablicy pomocniczej
 	}
 	for (int i=(r-p)/2-1;i>=0;--i)
 	{
-		kopcowanie(pom,r-p,i);
+		kopcowanie(pom,r-p,i);		
 	}
 	for (int i=(r-p)-1;i>=0;--i)
 	{
 		liczba_pom=pom[0];
-		pom[0]=pom[i];
+		pom[0]=pom[i];				
 		pom[i]=liczba_pom;
-		kopcowanie(pom,i,0);
+		kopcowanie(pom,i,0);			
 	}
 	for (int i=0;i<r-p;i++)
 	{
-		T[i+p]=pom[i];
+		T[i+p]=pom[i];			// nadpisywanie tablicy pierwotnej tablic¹ pomocnicz¹
 	}
 	delete [] pom;
 }
